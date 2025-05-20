@@ -96,50 +96,55 @@ const ChatMessage = ({
     }, 500);
   };
 
-  return (
+return (
+  <div
+    style={{
+      display: "flex",
+      flexDirection: isAI ? "row" : "row-reverse",
+      margin: "16px 0",
+      gap: 12,
+    }}
+  >
+    <Avatar
+      src={isAI ? "/images/ai-avatar.jpg" : "/images/user-avatar.jpg"}
+      style={{
+        backgroundColor: "#1890ff",
+        width: 40,
+        height: 40,
+      }}
+    />
     <div
       style={{
-        display: "flex",
-        flexDirection: isAI ? "row" : "row-reverse",
-        margin: "16px 0",
-        gap: 12,
+        backgroundColor: isAI ? "#f0faff" : "#167CFF",
+        color: isAI ? "rgba(0,0,0,0.85)" : "#fff",
+        padding: 12,
+        borderRadius: 8,
+        maxWidth: "70%",
+        border: "1px solid #e6f7ff",
+        boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
       }}
     >
-      <Avatar
-        src={isAI ? "/images/ai-avatar.jpg" : "/images/user-avatar.jpg"}
-        style={{
-          backgroundColor: isAI ? "#1890ff" : "#1890ff",
-          width: 40,
-          height: 40,
-        }}
-      />
-      <div
-        style={{
-          backgroundColor: isAI ? "#f0faff" : "#167CFF",
-          padding: 12,
-          borderRadius: 8,
-          maxWidth: "70%",
-          border: "1px solid #e6f7ff",
-          boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
-        }}
-      >
-        {text}
-        {img && (
-          <img
-            className="w-[70%] h-auto rounded-sm my-[10px] cursor-pointer"
-            src={img}
-            onClick={() => setCurrentImage(img)}
-            onLoad={onImageLoad}
-          />
-        )}
-        {jumpPath && (
-          <Button onClick={() => handleJump(jumpPath)} className="mt-0 ml-3 text-sm px-2 py-1">
-            {jumpText}
-          </Button>
-        )}
-      </div>
+      {text}
+      {img && (
+        <img
+          className="w-[70%] h-auto rounded-sm my-[10px] cursor-pointer"
+          src={img}
+          onClick={() => setCurrentImage(img)}
+          onLoad={onImageLoad}
+        />
+      )}
+      {jumpPath && (
+        <Button
+          onClick={() => handleJump(jumpPath)}
+          className="mt-0 ml-3 text-sm px-2 py-1"
+        >
+          {jumpText}
+        </Button>
+      )}
     </div>
-  );
+  </div>
+);
+
 };
 
 const ChatInterface = forwardRef((props: {
