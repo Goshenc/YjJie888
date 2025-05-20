@@ -115,7 +115,7 @@ const ChatMessage = ({
       />
       <div
         style={{
-          backgroundColor: isAI ? "#f0faff" : "#e6f7ff",
+          backgroundColor: isAI ? "#f0faff" : "#167CFF",
           padding: 12,
           borderRadius: 8,
           maxWidth: "70%",
@@ -270,7 +270,7 @@ const ChatInterface = forwardRef((props: {
       const aiResponse = aiResponses[aiResponseIndex];
       setMessages([...newMessages, { ...aiResponse, isAI: true }]);
       setAiResponseIndex((prevIndex) => (prevIndex + 1) % aiResponses.length);
-    }, 500);
+    }, 1000);
   };
 
   return (
